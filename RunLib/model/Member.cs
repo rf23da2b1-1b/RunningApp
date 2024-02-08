@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RunLib.model
 {
+
     public class Member
     {
         private static List<string> teamColors = new List<string>()

@@ -2,7 +2,6 @@
 using RunLib.model;
 using RunLib.repository;
 
-Console.WriteLine("Hello, World!");
 
 Member m1 = new Member(1, "peter", "22334455", "gul", 100);
 Member m2 = new Member(2, "jakob", "99775533", "rød", 110);
@@ -54,10 +53,59 @@ foreach (Member m in repo.GetAll())
 
 
 
+/*
+ * MED ENUM
+*/
+Console.ReadLine();
+Console.Clear();
 
+MemberEnum me1 = new MemberEnum(1, "peter", "22334455", TeamColorType.gul, 100);
+MemberEnum me2 = new MemberEnum(2, "jakob", "99775533", TeamColorType.rød, 110);
+MemberEnum me3 = new MemberEnum(3, "vibeke", "66118822", TeamColorType.blå, 90);
 
+Console.WriteLine(me1);
+Console.WriteLine(me2);
+Console.WriteLine(me3);
 
+Console.WriteLine("---> Repository <---");
+MemberEnumRepository repoEnum = new MemberEnumRepository();
+Console.WriteLine("---> Repository ADD <---");
 
+MemberEnum membere = repoEnum.Add(me1);
+Console.WriteLine(membere);
+membere = repoEnum.Add(me2);
+Console.WriteLine(membere);
+membere = repoEnum.Add(me3);
+Console.WriteLine(membere);
+
+Console.WriteLine("---> Repository ToString <---");
+Console.WriteLine(repoEnum);
+
+Console.WriteLine("---> Repository GetById findes <---");
+Console.WriteLine(repoEnum.GetById(1));
+try
+{
+    Console.WriteLine("---> Repository GetById findes IKKE <---");
+
+    repoEnum.GetById(19);
+}
+catch (KeyNotFoundException knfe)
+{
+    Console.WriteLine(knfe.Message);
+}
+
+Console.WriteLine("---> Repository Update <---");
+MemberEnum me2update = new MemberEnum(2, "jakob", "11122233", TeamColorType.sort, 150);
+Console.WriteLine(repoEnum.Update(2, me2update));
+
+Console.WriteLine("---> Repository Delete <---");
+Console.WriteLine(repoEnum.Delete(3));
+
+Console.WriteLine("---> Repository GetAll <---");
+foreach (MemberEnum m in repoEnum.GetAll())
+{
+    Console.WriteLine(m);
+}
 
 
 
