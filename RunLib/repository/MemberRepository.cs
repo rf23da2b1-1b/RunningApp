@@ -42,7 +42,7 @@ namespace RunLib.repository
         {
             // nu har vi ikke en set til Id 
             // => laver et nyt objekt med et genereret Id
-
+            
             Member newMember = new Member(GenerateNextId(), m.Name, m.Mobile, m.Team, m.Price);
             _members.Add(newMember);
             return newMember;
@@ -62,6 +62,14 @@ namespace RunLib.repository
                 throw new ArgumentException($"Kan ikke updatere et id {id} med et andet {member.Id}");
             }
             Member updateMember = GetById(id);
+
+            // alternativit
+            //updateMember.Name = member.Name;
+            //updateMember.Mobile = member.Mobile;
+            //updateMember.Team = member.Team;
+            //updateMember.Price = member.Price;
+
+
             int ix = _members.IndexOf(updateMember);
             _members[ix] = member;
 
@@ -74,8 +82,6 @@ namespace RunLib.repository
             return "Members= [ " + string.Join(", ", _members) + " ]";
 
         }
-
-
 
         // utility method
         private int GenerateNextId()

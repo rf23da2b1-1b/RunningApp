@@ -9,7 +9,7 @@ namespace RunLib.model
 
     public class Member
     {
-        private static List<string> teamColors = new List<string>()
+        private  List<string> teamColors = new List<string>()
             {
                 "sort", "blå", "grøn", "gul", "orange", "rød"
             };
@@ -27,8 +27,9 @@ namespace RunLib.model
 		public int Id
 		{
 			get { return _id; }
-			// evt. private set { _id = value; } så kan den kun tilgås inde i klassen selv
-		}
+            // evt. private set { _id = value; } så kan den kun tilgås inde i klassen selv
+            private set { _id = value; }
+        }
 
 
 		public string Name
@@ -40,7 +41,8 @@ namespace RunLib.model
 				{
 					throw new ArgumentNullException("Navn skal være 3 tegn langt");
 				}
-                if (value.Length < 3)
+
+                if (value.Trim().Length < 3)
                 {
                     throw new ArgumentException("Navn skal være 3 tegn langt");
                 }
@@ -101,7 +103,7 @@ namespace RunLib.model
 
 		// konstruktører
         public Member():
-			this(-1,"","","",0.0)
+			this(-1,"abc","00000000","rød",0.0)
         {
         }
 
@@ -112,7 +114,7 @@ namespace RunLib.model
 
         public Member(int id, string name, string mobile, string team, double price)
         {
-            _id = id;
+            Id = id;
             Name = name;
             Mobile = mobile;
             Team = team;

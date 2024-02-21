@@ -7,6 +7,7 @@ Member m1 = new Member(1, "peter", "22334455", "gul", 100);
 Member m2 = new Member(2, "jakob", "99775533", "rød", 110);
 Member m3 = new Member(3, "vibeke", "66118822", "blå", 90);
 
+
 Console.WriteLine(m1);
 Console.WriteLine(m2);
 Console.WriteLine(m3);
