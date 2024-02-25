@@ -1,4 +1,5 @@
-﻿using RunLib.model;
+﻿using RunLib.mockData;
+using RunLib.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,18 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace RunLib.repository
 {
-    public class MemberRepository
+    public class MemberRepository : IMemberRepository
     {
         private readonly List<Member> _members;
 
-        public MemberRepository()
+        public MemberRepository(bool withTestData = false)
         {
             _members = new List<Member>();
+
+            if (withTestData)
+            {
+                _members.AddRange(MemberMockData.GetMembers);
+            }
         }
 
         /*
@@ -24,13 +30,13 @@ namespace RunLib.repository
          */
         public List<Member> GetAll()
         {
-            return new List<Member>(_members );
+            return new List<Member>(_members);
         }
 
         public Member GetById(int id)
         {
             Member? fundetMember = _members.Find(m => m.Id == id);
-            if (fundetMember is null) 
+            if (fundetMember is null)
             {
                 throw new KeyNotFoundException($"Member with id={id} is not found");
             }
@@ -42,7 +48,7 @@ namespace RunLib.repository
         {
             // nu har vi ikke en set til Id 
             // => laver et nyt objekt med et genereret Id
-            
+
             Member newMember = new Member(GenerateNextId(), m.Name, m.Mobile, m.Team, m.Price);
             _members.Add(newMember);
             return newMember;
@@ -86,11 +92,11 @@ namespace RunLib.repository
         // utility method
         private int GenerateNextId()
         {
-            return (_members.Count == 0)? 1 : _members.Max(m => m.Id) + 1;
+            return (_members.Count == 0) ? 1 : _members.Max(m => m.Id) + 1;
         }
 
-        
 
-        
+
+
     }
 }

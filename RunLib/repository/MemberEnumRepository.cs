@@ -1,4 +1,5 @@
-﻿using RunLib.model;
+﻿using RunLib.mockData;
+using RunLib.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,18 @@ using System.Threading.Tasks;
 
 namespace RunLib.repository
 {
-    public class MemberEnumRepository
+    public class MemberEnumRepository : IMemberEnumRepository
     {
         private readonly List<MemberEnum> _members;
 
-        public MemberEnumRepository()
+        public MemberEnumRepository(bool withTestData = false)
         {
             _members = new List<MemberEnum>();
+
+            if (withTestData)
+            {
+                _members.AddRange(MemberMockData.GetMembersEnum);
+            }
         }
 
         /*
