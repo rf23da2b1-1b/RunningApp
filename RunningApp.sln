@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RunLib", "RunLib\RunLib.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RunLibTests", "RunLibTests\RunLibTests.csproj", "{068E3435-175D-4166-B171-CB7D996090E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunningRazor", "RunningRazor\RunningRazor.csproj", "{B6A4F446-21E5-4BEE-973C-CBDFD3ABC041}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RunningRazor", "RunningRazor\RunningRazor.csproj", "{B6A4F446-21E5-4BEE-973C-CBDFD3ABC041}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

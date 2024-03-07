@@ -1,0 +1,59 @@
+﻿@page
+@using RunLib.model;
+@model RunningRazor.Pages.members.IndexModel
+@{
+    ViewData["Title"] = "Oversigt af Medlemmer";
+}
+<div class="container">
+    <div class="col">
+        <div class="row">
+            <h1 class="jumbotron">Medlemmer i <strong>løb for livet</strong></h1>
+            <form method="post">
+                Name: <input type="text" asp-for="@Model.SearchStr" />
+                &nbsp;&nbsp;&nbsp;
+                Team: 
+                @foreach(TeamColorType c in Model.Teams)
+                {
+                    <input type="radio" value="@c" asp-for="@Model.ChoosenTeam">
+                    <label class="@Model.ConvertColor(c)">@c.ToString()&nbsp; &nbsp;</label>
+                }
+                <input type="radio" value="@Model.IKKE_VALGT" asp-for="@Model.ChoosenTeam">
+                <label class="blackTeam">@Model.IKKE_VALGT &nbsp;</label>
+                &nbsp;&nbsp;&nbsp;<input type="submit" value="Søg" class="btn btn-outline-success" />
+            </form>
+
+            <p>&nbsp;</p>
+            <div class="col-6">
+                <div class="row">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Navn</th>
+                                <th>Team</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (MemberEnum m in Model.Members)
+                            {
+                                <tr class="@Model.ConvertColor(m.Team)">
+                                    <td>@m.Id</td>
+                                    <td><strong>@m.Name</strong></td>
+                                    <td>@m.Team</td>
+                                    <td><a asp-page="DeleteMember" asp-route-id="@m.Id">Slet</a></td>
+                                    <td><a asp-page="DetailedMember" asp-route-id="@m.Id">Info</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p>&nbsp;</p>
+            <form class="col-2" method="get">
+            <input type="submit" value="Opret nyt medlem" asp-page="CreateMember" class="btn btn-success"/>
+            </form>
+        </div>
+    </div>
+</div>

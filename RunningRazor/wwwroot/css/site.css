@@ -18,5 +18,24 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    
+}
+.blackTeam {
+    color: black;
+}
+.blueTeam {
+    color: blue;
+}
+.greenTeam {
+    color: green;
+}
+.yellowTeam {
+    color: gold;
+}
+.orangeTeam {
+    color: orange;
+}
+.redTeam {
+    color: red;
 }

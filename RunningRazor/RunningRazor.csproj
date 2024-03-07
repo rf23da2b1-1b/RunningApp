@@ -10,4 +10,8 @@
     <ProjectReference Include="..\RunLib\RunLib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>

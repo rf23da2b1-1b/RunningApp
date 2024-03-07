@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddSingleton<MemberRepository>(new MemberRepository());
+builder.Services.AddSingleton<IMemberEnumRepository>(new MemberEnumRepository(true)); // indsætter test data
 
 var app = builder.Build();
 

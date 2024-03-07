@@ -1,0 +1,38 @@
+﻿@page
+@model RunningRazor.Pages.members.DeleteMemberModel
+@{
+    ViewData["Title"] = "Slet et Medlem";
+}
+<div class="container">
+    <div class="col">
+        <div class="row">
+            <h1 class="jumbotron">Slet et medlem fra <strong>løb for livet</strong></h1>
+
+            <p>&nbsp;</p>
+            <form method="post">
+                <div class="col-6">
+                    <div class="row">
+                        <h1>Vil du slette dette medlem?</h1>
+                        <p>&nbsp;</p>
+                        <strong>
+                            <label>Navn:&nbsp; @Model.DeleteMember.Name</label><br />
+                            <label>Id:&nbsp;&nbsp;&nbsp; @Model.DeleteMember.Id</label><br />
+                            <label>Mobil: @Model.DeleteMember.Mobile</label><br />
+                            <label>Team:&nbsp; @Model.DeleteMember.Team</label><br />
+                            <label>Pris:&nbsp; @Model.DeleteMember.Price</label><br />
+                        </strong>
+                    </div>
+                </div>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <div class="row">
+                    <div class="col-3">
+                        <input type="submit" value="Slet" asp-route-id="@Model.DeleteMember.Id" class="btn btn-danger" />&nbsp;&nbsp;&nbsp;
+                        <input type="submit" value="Fortryd" asp-page="Index" class="btn btn-secondary" />
+                    </div>
+                </div>                
+            </form>
+        </div>
+    </div>
+</div>
+
